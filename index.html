@@ -2,5 +2,13 @@
     <head><title>Steven Harrison</title></head>
     <body>
         Test
+        <div id='content'></div>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <script>
+            $.get('https://stevenharrison.github.io/stevenmarkharrison.com/Test.md', function(data) {
+                document.getElementById('content').innerHTML = marked.parse(data);
+            });
+        </script>
     </body>
 </html>
