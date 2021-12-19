@@ -1,13 +1,15 @@
 <html>
     <head><title>Steven Harrison</title></head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <body>
         Test
         <div id='content'></div>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <script>
-            $.get('https://stevenharrison.github.io/stevenmarkharrison.com/Test.md', function(data) {
-                document.getElementById('content').innerHTML = marked.parse(data);
+            $(document).ready(function() {
+                $.get('https://stevenharrison.github.io/stevenmarkharrison.com/Test.md', function(data) {
+                    document.getElementById('content').innerHTML = marked.parse(data);
+                });
             });
         </script>
     </body>
