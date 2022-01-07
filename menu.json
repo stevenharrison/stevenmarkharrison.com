@@ -1,0 +1,5 @@
+{
+    "content" : [
+        { "category" : "Programming", "name" : "Test", "location" : "dir1/Test", "tags" : ["C#", "ASP.NET", "Blazor"] }
+    ]
+}
