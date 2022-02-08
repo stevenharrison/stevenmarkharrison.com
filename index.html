@@ -49,6 +49,7 @@
         <div id='content'></div>
         <script>
             var menu = "";
+            var repo = "stevenmarkharrison.com/";
             function menuUpdate() {
 
             }
@@ -59,7 +60,7 @@
                     
                 });
 
-                $.get('Test.md', function(data) {
+                $.get('/' + repo + 'Test.md', function(data) {
                     document.getElementById('content').innerHTML = marked.parse(data);
                 });
             });
