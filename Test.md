@@ -1,6 +1,6 @@
 ---
 Title: Interacting with files
-Tags: ['Python', 'Files']
+Tags: [Python, Files]
 ---
 # Files in Python
 
@@ -10,17 +10,18 @@ Reading data from a file is easy in python. This is done using the **open(filepa
 |------|-----|
 | r | This mode is used to read from a file |
 
-    filename = "myfile.txt"
+```
+filename = "myfile.txt"
 
-    # Using 'with' automatically closes the file onces the block ends
-    # 
-    with open(filename, "r") as f:
-        # To read the lines into a list
-        line_list = f.readlines()
+# Using 'with' automatically closes the file onces the block ends
+# 
+with open(filename, "r") as f:
+    # To read the lines into a list
+    line_list = f.readlines()
 
-    # If you are not using 'with'
-    f = open(filename, "r")
-
+# If you are not using 'with'
+f = open(filename, "r")
+```
 
 Using the with statement block or closing the file manually is important. 
 - The python garbage collector will do it for you eventually, but it is best to do it as soon as you don't need it anymore. This is to free up resources, and allow another process to use the file if necessary.
