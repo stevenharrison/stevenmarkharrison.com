@@ -59,7 +59,7 @@
                     
                 });
 
-                $.get(location.origin + '/Test.md', function(data) {
+                $.get('/Test.md', function(data) {
                     document.getElementById('content').innerHTML = marked.parse(data);
                 });
             });
