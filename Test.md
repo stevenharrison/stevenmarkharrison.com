@@ -10,7 +10,7 @@ Reading data from a file is easy in python. This is done using the **open(filepa
 |------|-----|
 | r | This mode is used to read from a file |
 
-```
+```python
 filename = "myfile.txt"
 
 # Using 'with' automatically closes the file onces the block ends

@@ -1,5 +1,40 @@
 {
-    "content" : [
-        { "category" : "Programming", "name" : "Test", "location" : "dir1/Test", "tags" : ["C#", "ASP.NET", "Blazor"] }
+    "tags": [
+        "Files",
+        "Data Structures",
+        "Python"
+    ],
+    "categories": [
+        "Computing/Python",
+        "Computing/Data Engineering/Python"
+    ],
+    "content": [
+        {
+            "title": "Python Data Structures",
+            "file_name": "Python Data Structures.md",
+            "location": [
+                "Computing",
+                "Data Engineering",
+                "Python"
+            ],
+            "published_on": "2022-02-09",
+            "tags": [
+                "Python",
+                "Data Structures"
+            ]
+        },
+        {
+            "title": "Interacting with files",
+            "file_name": "InteractingWithFiles.md",
+            "location": [
+                "Computing",
+                "Python"
+            ],
+            "published_on": "2022-02-09",
+            "tags": [
+                "Python",
+                "Files"
+            ]
+        }
     ]
 }
