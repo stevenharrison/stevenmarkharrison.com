@@ -5,11 +5,12 @@
         "Python"
     ],
     "categories": [
-        "Computing/Python",
-        "Computing/Data Engineering/Python"
+        "Computing/Data Engineering/Python",
+        "Computing/Python"
     ],
     "content": [
         {
+            "id": "3d483bf5-6d57-40f0-8075-d253764a63ad",
             "title": "Python Data Structures",
             "file_name": "Python Data Structures.md",
             "location": [
@@ -24,6 +25,7 @@
             ]
         },
         {
+            "id": "9ae8779c-2a90-4e44-8b72-d908892ff49a",
             "title": "Interacting with files",
             "file_name": "InteractingWithFiles.md",
             "location": [
