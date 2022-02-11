@@ -39,15 +39,45 @@
       code, code > * {
         font-family: 'Courier New', Courier, monospace !important;
       }
+      .MenuItem {
+
+      }
+      div#header {
+        height: 40px;
+        width: 100%;
+      }
+      div#header-title {
+        width: 20%;
+        display: inline-block;
+      }
+      div#header-application {
+        display: inline-block;
+      }
     </style>
     <body>
-        <div id="contents">
-
+        <div id="header">
+          <div id="header-title">Steven Harrison</div>
+          <div id="header-application">Knowledge Base - [Search] - [Items]</div>
         </div>
-        <div id='content'></div>
+        <div id="main">
+          <div id="contents">
+            <!-- Categories, item type (knowledge item, blog post) -->
+            <div id="contents-tags"></div>
+            <div id="contents-items"></div>
+          </div>
+          <div id='viewer'>
+            <div id="viewer-openItemMenu">
+
+            </div>
+            <div id="viewer-page">
+
+            </div>
+          </div>
+        </div>
+        
         <script>
             var menu = "";
-            var repo = ""; //"stevenmarkharrison.com/";
+            var repo = "stevenmarkharrison.com/";
             var converter = new showdown.Converter({tables: true, simpleLineBreaks: true, ghCodeBlocks: true, metadata: true});
 
             function menuUpdate() {
@@ -61,6 +91,7 @@
             }
 
             function loadItem(id) {
+              // Update URL id/path/name - Only use the ID, path/name for SEO
               var item = "";
               for(var i = 0; i < menu.content.length; i++) {
                 if(menu.content[i].id == id) {
@@ -70,7 +101,7 @@
               }
               var url = `/${repo}Articles/${item.location.join("/")}/${item.file_name}`;
               $.get(encodeURIComponent(url), function(data) {
-                  document.getElementById('content').innerHTML = converter.makeHtml(data);//md.render(data);
+                  document.getElementById('viewer-page').innerHTML = converter.makeHtml(data);//md.render(data);
                   hljs.highlightAll();
                   //console.log(converter.getMetadata(true));
                   //console.log(converter.getMetadataFormat());
