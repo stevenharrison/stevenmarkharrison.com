@@ -71,8 +71,12 @@
       span.content-Tag {
         border: 2px solid lightblue;
         border-radius: 5px;
-        padding: 5px;
+        padding: 3px;
         margin: 2px;
+        font-size: 12px;
+      }
+      span.content-Tag-Selected {
+        background-color: skyblue;
       }
     </style>
     <body>
@@ -99,20 +103,38 @@
         
         <script>
             var menu = "";
-            var repo = ""; //"stevenmarkharrison.com/";
+            var repo = "stevenmarkharrison.com/";// ""; 
             var converter = new showdown.Converter({tables: true, simpleLineBreaks: true, ghCodeBlocks: true, metadata: true});
+
+            function setMenu(tags = []) {
+              $("#contents-items").empty();
+              for(var i = 0; i < menu.content.length; i++) {
+                // Loop through each tag and check if 
+                if(tags.length > 0) {
+                  var breakItem = false;
+                  for(var t = 0; t < tags.length; t++) {
+                    if(!menu.content[i].tags.includes(tags[t])) {
+                      breakItem = true;
+                      break;
+                    }
+                  }
+                  if(breakItem) {
+                    continue;
+                  }
+                }
+                var item = menu.content[i];
+                $("#contents-items").append(`<div class="MenuItem" data-id="${item.id}">
+                <div class="MenuItem-Title">${item.title}</div><div class="MenuItem-SubLine">
+                  Published: ${item.published_on} | Tags: ${item.tags} 
+                </div>
+                </div>`);
+              }
+            }
 
             function menuUpdate() {
               $.getJSON('menu.json?_=' + new Date().getTime(), function(data) { // Timestamp to prevent browser cache
-                  menu = data; 
-                  for(var i = 0; i < menu.content.length; i++) {
-                    var item = menu.content[i];
-                    $("#contents-items").append(`<div class="MenuItem" data-id="${item.id}">
-                    <div class="MenuItem-Title">${item.title}</div><div class="MenuItem-SubLine">
-                      Published: ${item.published_on} | Tags: ${item.tags} 
-                    </div>
-                    </div>`);
-                  }
+                  menu = data;
+                  setMenu(); 
                   setTags();
                 }); 
             }
@@ -136,7 +158,16 @@
             }
 
             $(document).on("click", ".MenuItem", function(e){
-              loadItem($(e.target).attr("data-id"));
+              loadItem($(this).attr("data-id"));
+            });
+
+            $(document).on("click", ".content-Tag", function(e){
+              $(this).toggleClass("content-Tag-Selected");
+              var tags = [];
+              $(".content-Tag-Selected").each(function(){
+                tags.push($(this).text());
+              });
+              setMenu(tags);
             });
 
             function setTags() {
