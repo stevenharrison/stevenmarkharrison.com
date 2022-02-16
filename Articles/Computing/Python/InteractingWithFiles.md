@@ -7,11 +7,17 @@ PublishedOn: '2022-02-09'
 ---
 # Files in Python
 
-Reading data from a file is easy in python. This is done using the **open(filepath, mode)** function. The filepath parameter is a string, which contain the path to the file. The mode is a string which defines how you are going to use the file:
+Reading data from a file is easy in python. This is done using the **open(filepath, mode)** function. The filepath parameter is a string, which contain the path to the file. The mode is a string which defines how you are going to use the file (these are the same as the modes in the C Standard Library function fopen()):
 
 | Mode | Use |
 |------|-----|
-| r | This mode is used to read from a file |
+| r | Read from a file |
+| r+ | Read and Write to a file |
+| w | Write to a new file. An existing file will be truncated |
+| w+ | Creates a new file, or truncates an existing one, with read and write functionality. |
+| a | Append to an existing file (create if it doesn't exist). Cursor is at the end of the file, so any writes will be appended to the end |
+| a+ | Same as 'a' expect you can read as well |
+
 
 ```python
     filename = "myfile.txt"
@@ -21,6 +27,8 @@ Reading data from a file is easy in python. This is done using the **open(filepa
     with open(filename, "r") as f:
         # To read the lines into a list
         line_list = f.readlines()
+        # Only read lines up to 100 bytes, and then stop
+        line_list = f.readlines(100) 
 
     # If you are not using 'with'
     f = open(filename, "r")

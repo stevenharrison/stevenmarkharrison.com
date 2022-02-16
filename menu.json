@@ -1,14 +1,41 @@
 {
     "tags": [
+        "Base64",
+        "Powershell",
         "Files",
+        "Rust",
+        "Python",
+        "Basic Authentication",
+        "C#",
+        "GAC",
+        "SSIS",
         "Data Structures",
-        "Python"
+        "HTTP"
     ],
     "categories": [
         "Computing/Data Engineering/Python",
-        "Computing/Python"
+        "Computing/C#",
+        "Computing/Python",
+        "Computing/Powershell",
+        "Computing/Rust"
     ],
     "content": [
+        {
+            "id": "760183b1-a055-42fc-af61-e6f53af6e4b6",
+            "title": "Encoding a Username and Password in base64 for Basic Authentication in C#",
+            "file_name": "Base64Encoding.md",
+            "location": [
+                "Computing",
+                "C#"
+            ],
+            "published_on": "2022-02-14",
+            "tags": [
+                "C#",
+                "Base64",
+                "Basic Authentication",
+                "HTTP"
+            ]
+        },
         {
             "id": "3d483bf5-6d57-40f0-8075-d253764a63ad",
             "title": "Python Data Structures",
@@ -25,6 +52,21 @@
             ]
         },
         {
+            "id": "23f3a64a-8b1e-4644-8ab9-da85b0907e1b",
+            "title": "Installing a DLL to the GAC",
+            "file_name": "InstallingToTheGAC.md",
+            "location": [
+                "Computing",
+                "Powershell"
+            ],
+            "published_on": "2022-02-14",
+            "tags": [
+                "Powershell",
+                "GAC",
+                "SSIS"
+            ]
+        },
+        {
             "id": "9ae8779c-2a90-4e44-8b72-d908892ff49a",
             "title": "Interacting with files",
             "file_name": "InteractingWithFiles.md",
@@ -36,6 +78,19 @@
             "tags": [
                 "Python",
                 "Files"
+            ]
+        },
+        {
+            "id": "4aabb17a-7889-40fb-83ab-cad888bd3eaf",
+            "title": "A simple rust Web Assembly project",
+            "file_name": "WebAssembly.md",
+            "location": [
+                "Computing",
+                "Rust"
+            ],
+            "published_on": "2022-02-14",
+            "tags": [
+                "Rust"
             ]
         }
     ]

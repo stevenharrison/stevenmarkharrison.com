@@ -78,6 +78,9 @@
       span.content-Tag-Selected {
         background-color: skyblue;
       }
+      span.content-Tag-Disabled {
+        background-color: gray;
+      }
     </style>
     <body>
         <div id="header">
@@ -103,11 +106,12 @@
         
         <script>
             var menu = "";
-            var repo = "stevenmarkharrison.com/";// ""; 
+            var repo = ""; //"stevenmarkharrison.com/";
             var converter = new showdown.Converter({tables: true, simpleLineBreaks: true, ghCodeBlocks: true, metadata: true});
 
             function setMenu(tags = []) {
               $("#contents-items").empty();
+              activeTags = new Set();
               for(var i = 0; i < menu.content.length; i++) {
                 // Loop through each tag and check if 
                 if(tags.length > 0) {
@@ -122,6 +126,9 @@
                     continue;
                   }
                 }
+                for(var t = 0; t < menu.content[i].tags.length; t++) {
+                  activeTags.add(menu.content[i].tags[t]);
+                }
                 var item = menu.content[i];
                 $("#contents-items").append(`<div class="MenuItem" data-id="${item.id}">
                 <div class="MenuItem-Title">${item.title}</div><div class="MenuItem-SubLine">
@@ -129,6 +136,16 @@
                 </div>
                 </div>`);
               }
+              setDisabledTags(activeTags);
+            }
+
+            function setDisabledTags(activeTags) {
+              $(".content-Tag").removeClass("content-Tag-Disabled");
+              $(".content-Tag").each(function(){
+                if(!activeTags.has($(this).text())) {
+                  $(this).toggleClass("content-Tag-Disabled");
+                }
+              });
             }
 
             function menuUpdate() {
@@ -162,12 +179,14 @@
             });
 
             $(document).on("click", ".content-Tag", function(e){
-              $(this).toggleClass("content-Tag-Selected");
-              var tags = [];
-              $(".content-Tag-Selected").each(function(){
-                tags.push($(this).text());
-              });
-              setMenu(tags);
+              if(!$(this).hasClass("content-Tag-Disabled")) {
+                $(this).toggleClass("content-Tag-Selected");
+                var tags = [];
+                $(".content-Tag-Selected").each(function(){
+                  tags.push($(this).text());
+                });
+                setMenu(tags);
+              }
             });
 
             function setTags() {
