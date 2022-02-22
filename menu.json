@@ -1,23 +1,32 @@
 {
     "tags": [
         "Base64",
+        "Power BI",
         "Powershell",
+        "SSIS",
+        "SQLAgent",
+        "Basic Authentication",
+        "Strings",
+        "Python",
+        "SQL Server",
+        "SQL",
+        "GAC",
         "Files",
         "Rust",
-        "Python",
-        "Basic Authentication",
-        "C#",
-        "GAC",
-        "SSIS",
+        "HTTP",
         "Data Structures",
-        "HTTP"
+        "T-SQL",
+        "C#",
+        "Power Query"
     ],
     "categories": [
         "Computing/Data Engineering/Python",
-        "Computing/C#",
-        "Computing/Python",
         "Computing/Powershell",
-        "Computing/Rust"
+        "Computing/SQL/SQL Server",
+        "Computing/C#",
+        "Computing/Rust",
+        "Computing/Power BI",
+        "Computing/Python"
     ],
     "content": [
         {
@@ -52,6 +61,21 @@
             ]
         },
         {
+            "id": "4108cddb-5b1e-4d9a-b588-923585b0e4be",
+            "title": "Power Query with Raw SQL",
+            "file_name": "RawSQL.md",
+            "location": [
+                "Computing",
+                "Power BI"
+            ],
+            "published_on": "2022-02-22",
+            "tags": [
+                "Power BI",
+                "Power Query",
+                "SQL"
+            ]
+        },
+        {
             "id": "23f3a64a-8b1e-4644-8ab9-da85b0907e1b",
             "title": "Installing a DLL to the GAC",
             "file_name": "InstallingToTheGAC.md",
@@ -81,6 +105,20 @@
             ]
         },
         {
+            "id": "f3642a7b-530f-4c1d-be71-ea90067948ab",
+            "title": "Manipulating Strings with Python",
+            "file_name": "StringManipulation.md",
+            "location": [
+                "Computing",
+                "Python"
+            ],
+            "published_on": "2022-02-21",
+            "tags": [
+                "Python",
+                "Strings"
+            ]
+        },
+        {
             "id": "4aabb17a-7889-40fb-83ab-cad888bd3eaf",
             "title": "A simple rust Web Assembly project",
             "file_name": "WebAssembly.md",
@@ -91,6 +129,22 @@
             "published_on": "2022-02-14",
             "tags": [
                 "Rust"
+            ]
+        },
+        {
+            "id": "1f1bcd4a-e8f5-4bd0-83c2-2903e1cc7609",
+            "title": "Monitoring SQL Agent Jobs",
+            "file_name": "SQLAgentMonitoring.md",
+            "location": [
+                "Computing",
+                "SQL",
+                "SQL Server"
+            ],
+            "published_on": "2022-02-17",
+            "tags": [
+                "SQL Server",
+                "T-SQL",
+                "SQLAgent"
             ]
         }
     ]

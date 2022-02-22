@@ -106,7 +106,6 @@
         
         <script>
             var menu = "";
-            var repo = ""; //"stevenmarkharrison.com/";
             var converter = new showdown.Converter({tables: true, simpleLineBreaks: true, ghCodeBlocks: true, metadata: true});
 
             function setMenu(tags = []) {
@@ -165,7 +164,7 @@
                   break;
                 }
               }
-              var url = `/${repo}Articles/${item.location.join("/")}/${item.file_name}`;
+              var url = `/Articles/${item.location.join("/")}/${item.file_name}`;
               $.get(encodeURIComponent(url), function(data) {
                   document.getElementById('viewer-page').innerHTML = converter.makeHtml(data);//md.render(data);
                   hljs.highlightAll();
