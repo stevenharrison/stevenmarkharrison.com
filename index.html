@@ -9,204 +9,32 @@
           gtag('js', new Date());
           gtag('config', 'G-1M2MGBMZJ0');
         </script>  
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.0-alpha/showdown.min.js" integrity="sha512-CUppOBMZ+ERYviVSpZetRj1NZyAqz4cdylPFsxbOEbtPAp2ncBJIkb2SMu9YtRePvSAXwkxd3hgX4RyY8QcH4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.0-alpha/showdown.min.js" integrity="sha512-CUppOBMZ+ERYviVSpZetRj1NZyAqz4cdylPFsxbOEbtPAp2ncBJIkb2SMu9YtRePvSAXwkxd3hgX4RyY8QcH4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
-    <style>
-      * {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-      }
-      table {
-        margin: 10px;
-        border-collapse: collapse;
-      }
-      table, th, td {
-        border: 1px black solid;
-      }
-      th, td {
-        padding: 5px;
-      }
-      h1 {
-        border-bottom: 1px grey solid;
-        padding-bottom: 5px;
-      }
-      div#viewer-page {
-        margin: auto;
-        width: 800px;
-        line-height: calc(1ex / 0.32);
-      }
-      @supports (font-size-adjust: 1) {
-        div#content {
-              font-size-adjust: 0.5;
-          }
-      }
-      code, code > * {
-        font-family: 'Courier New', Courier, monospace !important;
-      }
-      div#contents {
-        width: 100%;
-      }
-      div#contents-items {
-        margin: auto;
-      }
-      div#contents-tags {
-        margin: auto;
-      }
-      .MenuItem {
-        border: 2px solid lightblue;
-        border-radius: 5px;
-        padding: 5px;
-        margin: 2px;
-      }
-      .MenuItem-SubLine {
-        font-size: 14px;
-      }
-      div#header {
-        height: 40px;
-        width: 100%;
-      }
-      div#header-title {
-        width: 20%;
-        display: inline-block;
-      }
-      div#header-application {
-        display: inline-block;
-      }
-      span.content-Tag {
-        border: 2px solid lightblue;
-        border-radius: 5px;
-        padding: 3px;
-        margin: 2px;
-        font-size: 12px;
-      }
-      span.content-Tag-Selected {
-        background-color: skyblue;
-      }
-      span.content-Tag-Disabled {
-        background-color: gray;
-      }
-    </style>
     <body>
         <div id="header">
           <div id="header-title">Steven Harrison</div>
           <div id="header-application">Knowledge Base - [Search] - [Items]</div>
         </div>
         <div id="main">
+          <div id="left-menu">
+            test
+            <div id="open-items"></div>
+          </div>
           <div id="contents">
-            <!-- Categories, item type (knowledge item, blog post) -->
             <div id="contents-tags"></div>
             <hr />
             <div id="contents-items"></div>
           </div>
           <div id='viewer'>
-            <div id="viewer-openItemMenu">
-
-            </div>
-            <div id="viewer-page">
-
-            </div>
+            <div id="viewer-openItemMenu"></div>
+            <div id="viewer-page"></div>
           </div>
         </div>
-        
-        <script>
-            var menu = "";
-            var converter = new showdown.Converter({tables: true, simpleLineBreaks: true, ghCodeBlocks: true, metadata: true});
-
-            function setMenu(tags = []) {
-              $("#contents-items").empty();
-              activeTags = new Set();
-              for(var i = 0; i < menu.content.length; i++) {
-                // Loop through each tag and check if 
-                if(tags.length > 0) {
-                  var breakItem = false;
-                  for(var t = 0; t < tags.length; t++) {
-                    if(!menu.content[i].tags.includes(tags[t])) {
-                      breakItem = true;
-                      break;
-                    }
-                  }
-                  if(breakItem) {
-                    continue;
-                  }
-                }
-                for(var t = 0; t < menu.content[i].tags.length; t++) {
-                  activeTags.add(menu.content[i].tags[t]);
-                }
-                var item = menu.content[i];
-                $("#contents-items").append(`<div class="MenuItem" data-id="${item.id}">
-                <div class="MenuItem-Title">${item.title}</div><div class="MenuItem-SubLine">
-                  Published: ${item.published_on} | Tags: ${item.tags} 
-                </div>
-                </div>`);
-              }
-              setDisabledTags(activeTags);
-            }
-
-            function setDisabledTags(activeTags) {
-              $(".content-Tag").removeClass("content-Tag-Disabled");
-              $(".content-Tag").each(function(){
-                if(!activeTags.has($(this).text())) {
-                  $(this).toggleClass("content-Tag-Disabled");
-                }
-              });
-            }
-
-            function menuUpdate() {
-              $.getJSON('menu.json?_=' + new Date().getTime(), function(data) { // Timestamp to prevent browser cache
-                  menu = data;
-                  setMenu(); 
-                  setTags();
-                }); 
-            }
-
-            function loadItem(id) {
-              // Update URL id/path/name - Only use the ID, path/name for SEO
-              var item = "";
-              for(var i = 0; i < menu.content.length; i++) {
-                if(menu.content[i].id == id) {
-                  item = menu.content[i];
-                  break;
-                }
-              }
-              var url = `/Articles/${item.location.join("/")}/${item.file_name}`;
-              $.get(encodeURIComponent(url), function(data) {
-                  document.getElementById('viewer-page').innerHTML = converter.makeHtml(data);//md.render(data);
-                  hljs.highlightAll();
-                  //console.log(converter.getMetadata(true));
-                  //console.log(converter.getMetadataFormat());
-              }, "text");
-            }
-
-            $(document).on("click", ".MenuItem", function(e){
-              loadItem($(this).attr("data-id"));
-            });
-
-            $(document).on("click", ".content-Tag", function(e){
-              if(!$(this).hasClass("content-Tag-Disabled")) {
-                $(this).toggleClass("content-Tag-Selected");
-                var tags = [];
-                $(".content-Tag-Selected").each(function(){
-                  tags.push($(this).text());
-                });
-                setMenu(tags);
-              }
-            });
-
-            function setTags() {
-              for(var i = 0; i < menu.tags.length; i++) {
-                $("#contents-tags").append(`<span class="content-Tag">${menu.tags[i]}</span>`);
-              }
-            }
-            
-            $(document).ready(function() {
-              menuUpdate();
-            });
-        </script>
+        <script src="index.js"></script>
     </body>
 </html>
